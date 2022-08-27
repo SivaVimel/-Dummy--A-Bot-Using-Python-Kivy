@@ -47,3 +47,17 @@
    - Press Clear 
    - command through your mic
    
+# Requirements :
+ - Python3
+ - kivy = 1.7.1
+ - sys : path
+ - instaloader
+ - speech_recognition
+ - datetime
+ - wikipedia
+ - webbrowser
+ - random
+ - urllib
+ - bs4
+ - pafy
+ - plyer
