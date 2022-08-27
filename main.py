@@ -170,7 +170,7 @@ class SayThis(BoxLayout):
                 tts.speak('Here is the location ' + location)
             
             #Download YouTbe Video
-            elif 'a youtube video' in text:
+            elif 'download video' in text:
                 text = text.replace("a youtube video", "")
                 url = text
                 video = pafy.new(url)
@@ -184,7 +184,7 @@ class SayThis(BoxLayout):
                 best.download()
                 tts.speak("Its done boss, i have downloaded the video your asked")
             #Download YouTube Audio
-            elif 'a youtube audio' in text or 'a youtube song' in text:
+            elif 'download audio' in text or 'a youtube song' in text:
                 text = text.replace("a youtube audio", "")
                 text = text.replace("a youtube song", "")
                 url = text
@@ -294,6 +294,8 @@ class SayThis(BoxLayout):
     
         
     def clear(self):
+        
+        
         hour = int(datetime.datetime.now().hour)
         if hour >= 0 and hour <= 12:
             tts.speak("Good Morning boss")
@@ -302,8 +304,265 @@ class SayThis(BoxLayout):
         else:
             tts.speak("Good Evening boss")
         tts.speak("How can i help you")
-        self.saywhat_text.text = ""
-        self.saywhat_text.focus = True
+        r = sr.Recognizer()
+     
+        with sr.Microphone() as source:
+            print("Listening...")
+            r.pause_threshold = 1
+            audio = r.listen(source,phrase_time_limit=5)
+  
+        try:
+            print("Recognizing...")   
+            text = r.recognize_google(audio, language ='en-in')
+            print(f"User said: {text.lower()}\n")
+            fav = ["yes boss this has the kick", "for me too boss", "i know boss"]
+            how = ["you programmed me boss","its magic","well you know","nice joke boss", "very well thank you"]
+            appreciation = ["thank you boss","not without you boss","no you did the best boss","its your effort boss","i appreciate you too boss"]
+            we_did_it = ["yes boss, we did it","not without you boss","yes boss"]
+            hru = ["i am good, how about you boss", "i am good boss", "fine boss" ,"fine boss and you" ,"i am fine boss and how is it for you"]
+            gd = ["You should always be happy boss, thats your favorite thing and i am here for you always on your command", "its good to hear boss", "great boss", "its good to hear you are happy boss"]
+            bd = ["you are not alone boss", "if you are alone then i am also alone boss"]
+            food = ["boss, you should probably eat" , "Your health is important boss", "do you want me to open online food shops?" , "boss do you want me to call any food service"]
+            mfav = ["thank you boss", "I appreciate that boss", "if you feel it  your my favorite too boss"]
+            
+            
+            
+            if 'play motivational' in text:
+                tts.speak("boss i am playing some motivational songs for you")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=UtF6Jej8yb4&list=PLWc9sw89ZYSlAgwhb4PDXF8ouui_FvcAj')
+                
+            elif 'play bass' in text:
+                tts.speak("Yes boss, lets shake the house")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=Bznxx12Ptl0&list=PLWc9sw89ZYSlTc35ibDq2t01NvwFVit8-')
+            elif 'my needle' in text:
+                tts.speak("Yes boss, here is the needle tracks for you")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=ebXbLfLACGM&list=PLWc9sw89ZYSnprxT42PdPzjc8X-wavnTK')
+            elif 'play happy' in text:
+                tts.speak("Yes boss, here you go")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=k-T4Odb-r5c&list=PLWc9sw89ZYSksJNICqx8jnp-Zpn5IwUii')
+            elif 'play sad' in text:
+                tts.speak("boss you have me, here is the song for you")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=W2PHbt6fr-g&list=PLWc9sw89ZYSkhKzA0yl8pEnlTZ77LaaCW')
+            elif 'play mood' in text:
+                tts.speak("boss here you go the naughty tracks")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=OORoOGY8D2M&list=PLWc9sw89ZYSmh8k_QqHXDgPuQILo7QBFN')
+            elif 'my beat' in text:
+                tts.speak("Yes boss, playing your listed songs")
+                webbrowser.open_new_tab(
+                    'https://www.youtube.com/watch?v=kudi8OtMu9s&list=PLWc9sw89ZYSkJkqF8M3aCKuxPS8jrUaiP')
+                   
+               
+            
+            elif "bye" in text or "go to sleep" in text:
+                hour = int(datetime.datetime.now().hour)
+                if hour >= 6 and hour <= 15:
+                    tts.speak("Good Bye boss, enjoy your day")
+                    exit()
+                elif hour >= 15 and hour <= 19:
+                    tts.speak("Good Bye boss, enjoy your evening")
+                    exit()
+                elif hour >= 19 and hour <= 23:
+                    tts.speak("Good Bye boss, enjoy your night")
+                    exit()
+                else:
+                    tts.speak("Good Night boss")
+                    exit()        
+            elif 'the best' in text:
+                tts.speak("you are the best boss")
+            elif 'ok dream' in text:
+                tts.speak("Yes boss, do you want me to do something for you boss")
+            elif 'thank you' in text or 'thankyou' in text:
+                tts.speak("Your welcome boss")
+            elif 'good work' in text or 'nice job' in text:
+                tts.speak("Thank You boss") 
+            
+                
+            elif 'step sister' in text:
+                tts.speak("Here is google for you sir")
+                webbrowser.open('https://www.google.com/')
+                
+            elif 'stack overflow' in text:
+                tts.speak("Here is Stackoverflow for you boss")
+                webbrowser.open('https://stackoverflow.com/')
+                
+            
+            elif 'search' in text:
+                text = text.replace("search", "")
+                
+                search = text
+                url = 'https://google.com/search?q=' + search
+                webbrowser.open_new_tab(url)
+                tts.speak('Here is What I found for' + search) 
+
+                
+            elif 'wikipedia' in text:
+                text = text.replace("wikipedia", "")
+                search = text
+                url = 'https://en.wikipedia.org/wiki/' + search
+                webbrowser.open_new_tab(url)
+                tts.speak('Here is What I found for' + search)
+                
+            elif 'what is' in text or 'tell me about' in text:
+                text = text.replace("what is", "")
+                text = text.replace("tell me about", "")
+                search = text
+                url = 'https://en.wikipedia.org/wiki/' + search
+                url1 = 'https://google.com/search?q=' + search
+                tts.speak('Here is What I found for' + search) 
+                webbrowser.open_new_tab(url1)
+                results = wikipedia.summary(text, sentences=2) 
+                tts.speak(results) 
+                
+            elif 'repositories' in text or 'repository' in text:
+                tts.speak("boss i am opening your github profile")
+                webbrowser.open_new_tab(
+                    'https://github.com/SivaVimel/SivaVimel')
+                
+            elif 'open youtube' in text:
+                webbrowser.open('www.youtube.com')
+                tts.speak("Here is youtube for you boss")
+            elif 'in youtube' in text:
+                text = text.replace("in youtube", "")
+                tube = text
+                url = "https://www.youtube.com/results?search_query=" + tube
+                webbrowser.open_new_tab(url)  
+                
+            
+            elif 'location' in text or 'locate' in text:
+                text = text.replace("location", "")
+                text = text.replace("locate", "")
+                location = text
+                url = 'https://google.nl/maps/place/' + location + '/&amp;'
+                webbrowser.open_new_tab(url)
+                tts.speak('Here is the location ' + location)
+            
+            elif 'a youtube video' in text:
+                text = text.replace("a youtube video", "")
+                url = text
+                video = pafy.new(url)
+
+                streams = video.streams
+                for i in streams:
+                    print(i)
+                best = video.getbest()
+
+                tts.print(best.resolution, best.extension)
+                best.download()
+                tts.speak("Its done boss, i have downloaded the video your asked")
+            elif 'a youtube audio' in text or 'a youtube song' in text:
+                text = text.replace("a youtube audio", "")
+                text = text.replace("a youtube song", "")
+                url = text
+                video = pafy.new(url)
+
+                bestaudio = video.getbestaudio()
+                bestaudio.download()
+                tts.speak("boss i have downloaded the audio your asked")
+            
+            elif 'insta stuff' in text:
+                webbrowser.open('https://instafinsta.com/')
+                tts.speak("boss here is the result")    
+            
+            elif 'open swiggy' in text:
+                webbrowser.open_new_tab("https://www.swiggy.com/")
+            elif 'open zomato' in text:
+                webbrowser.open_new_tab("https://www.zomato.com/")   
+                
+                
+            
+            elif 'how do you know' in text or 'how you know' in text:
+                tts.speak(random.choice(how))
+            elif 'favourite song' in text:
+                tts.speak(random.choice(fav))
+            elif 'you did great' in text:
+                tts.speak(random.choice(appreciation))
+            elif 'we did great' in text or 'we did it' in text:
+                tts.speak(random.choice(we_did_it))
+            elif 'how are you' in text:
+                tts.speak(random.choice(hru))
+            elif 'good day' in text or 'great day' in text or 'happy day' in text or 'good time' in text or 'great time' in text or 'happy time' in text:
+                tts.speak(random.choice(gd))
+            elif 'feeling bad' in text or 'am alone' in text or 'am sad' in text or 'bad day' in text or 'bad day' in text or 'sad day' in text or 'bad time' in text or 'bad time' in text or 'bad time' in text or 'feeling sad' in text or 'am broken' in text or 'in pain' in text or 'am heart broken' in text or 'in heart breaking' in text:
+                tts.speak(random.choice(bd))
+                tts.speak("boss how can i help you")
+                tts.speak("do you need your energy pill boss?")
+                tts.speak("just tell me which music pill you prefer")
+            elif 'drama queen' in text:
+                tts.speak("No boss, your girlfriend is the drama queen")
+            elif 'i am hungry' in text or 'i am starving' in text or 'did not eat food' in text or 'have not ate food' in text or 'did not ate food' in text:
+                tts.speak(random.choice(food))
+            elif 'you are my favourite' in text :
+                tts.speak(random.choice(mfav))
+            elif 'your name' in text:
+                tts.speak(random.choice(name))
+            elif 'are you' in text or 'are you a' in text:
+                tts.speak(random.choice(areu))    
+            elif 'created you' in text:
+                tts.speak("Siva Vimel Rajhen")
+            elif 'the best' in text:
+                tts.speak(random.choice(bst))
+            elif 'ok' in text or 'okay' in text or "kk" in text:
+                tts.speak(random.choice(okay))
+            elif 'no' in text or 'nope' in text or "na" in text:
+                tts.speak(random.choice(nope))
+            elif 'thank you' in text or 'thankyou' in text:
+                tts.speak(random.choice(ty))
+            elif 'good work' in text or 'nice job' in text:
+                tts.speak("Thank You boss")
+                
+            
+         
+            elif 'remember that' in text:
+                text = text.replace("remember that", "")
+                rememberMessage = text
+                tts.speak("you said me to remember"+rememberMessage)
+                remember = open('data.txt', 'a')
+                remember.write(rememberMessage)
+                remember.close()
+
+            elif 'remember anything' in text:
+                remember = open('data.txt', 'r')
+                tts.speak("you said me to remember that" + remember.read())
+            elif 'scary' in text or 'terrifying' in text:
+                tts.speak(random.choice(scary))
+            elif 'you like' in text :
+                tts.speak(random.choice(like))    
+            elif 'where are you' in text or 'your location' in text or 'where do you live' in text or 'which planet are you from' in text:
+                tts.speak(random.choice(wdl))
+            elif 'your use' in text:
+                tts.speak(random.choice(youruse))
+            elif 'help' in text:
+                tts.speak("Commands : \n Search (Title) - for title search via google \n Play (Music/MusicType) - to go to custom music playlist")
+            #space
+            elif 'space' in text:
+                tts.speak(random.choice(space))
+            elif 'ocean' in text:
+                tts.speak(random.choice(ocean))
+            elif 'jellyfish' in text or 'jelly fish' in text:
+                tts.speak(random.choice(jellyfish))
+                
+                
+            else:
+                tts.speak(random.choice(elsehere))
+                tts.speak("Well I can do google search for you")
+                tts.speak("Type Search Title")  
+                
+                    
+            self.saywhat_text.text = ""
+            self.saywhat_text.focus = True
+  
+        except Exception as e:
+            print(e)   
+            print("Unable to Recognize your voice.") 
+            return "None"
+     
+        return text
 
 
 class SayThisApp(App):
