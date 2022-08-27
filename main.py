@@ -326,7 +326,7 @@ class SayThis(BoxLayout):
             mfav = ["thank you boss", "I appreciate that boss", "if you feel it  your my favorite too boss"]
             
             
-            
+            # Voice Commands - To Have Separate Command Section for easy bug fix
             if 'play motivational' in text:
                 tts.speak("boss i am playing some motivational songs for you")
                 webbrowser.open_new_tab(
