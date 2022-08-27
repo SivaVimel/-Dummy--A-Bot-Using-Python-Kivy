@@ -43,7 +43,7 @@
   - To confirm the input
  ## CLEAR Button :
   - Clears the input box content
-  ### - To get voice input :
+  ###   - To get voice input :
    - Press Clear 
    - command through your mic
    
