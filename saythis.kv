@@ -7,14 +7,14 @@
     button_font_size: '30sp'
     padding: '8sp','8sp'
     canvas:
-        Color:
-            rgba: 0.12,0.12,0.12,1
+        
         Rectangle:
             pos: self.pos
             size: self.size
+            source: 'jarvis.png'
     saywhat_text: saywhat_text
     Label:
-        text: 'D U M M Y'
+        text: " "
         font_size: '45sp'
         size_hint: 1, None
         height: self.texture_size[1] + (2 * root.padding[1])
@@ -33,7 +33,7 @@
             foreground_color: ("#15F4EE")
             background_color: (0,0,0,0)
             id: saywhat_text
-            text: 'Hey, I am Dummy! \n Clear: before adding your command \n Enter: after adding your command'
+            text: 'Hey, I am JARVIS ! \n Clear: before adding your command \n Enter: after adding your command'
             font_size: str(font_slider.value)+'sp'
             
     BoxLayout:
@@ -43,16 +43,16 @@
         Button:
             id: sayit_button
             text: 'Enter'
-            background_color: (0,0,0,0.90)
-            color: ("#15F4EE")
+            background_color: ("#15F4EE")
+            color: (0,0,0,0.90)
             font_size: root.button_font_size
             size_hint: 1, None
             height: self.texture_size[1] + (2 * root.padding[1])
             on_press: root.say_something(saywhat_text.text)
         Button:
             text: 'Clear'
-            background_color: (0,0,0,0.90)
-            color: ("#15F4EE")
+            background_color: ("#15F4EE")
+            color: (0,0,0,0.90)
             font_size: root.button_font_size
             size_hint: 1, None
             height: self.texture_size[1] + (2 * root.padding[1])
