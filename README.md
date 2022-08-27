@@ -1,4 +1,4 @@
-# JARVIS Made With Python Framework Kivy
+# JARVIS Made With Kivy
 
 ![Screenshot_2022-08-27_12_07_45](https://user-images.githubusercontent.com/87802556/187018458-526f036a-92c3-49d9-a732-6ee25b0f1624.png)
 
