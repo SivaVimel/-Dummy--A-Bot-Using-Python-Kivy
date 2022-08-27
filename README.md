@@ -35,14 +35,14 @@
  - Talking :
    - Basic AI Conversation
    - Space :
-     Gets random answer or feed about Space
+     To get random answer or feed about Space
    - Ocean :
-     Gets random answer or feed about Ocean
+     To get random answer or feed about Ocean
  
  ## ENTER Button :
   - To confirm the input
  ## CLEAR Button :
-  - Clear's the input box content
+  - Clears the input box content
   ### - To get voice input :
    - Press Clear 
    - command through your mic
