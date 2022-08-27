@@ -29,9 +29,9 @@
      Gets [TITLE] wiki results
  - Youtube
    - Download Video [LINK] :
-     Download's best video resolution of [LINK]
+     Download best video resolution of [LINK]
    - Download Audio [LINK] :
-     Download's best audio of [LINK]
+     Download best audio of [LINK]
  - Talking :
    - Basic AI Conversation
    - Space :
